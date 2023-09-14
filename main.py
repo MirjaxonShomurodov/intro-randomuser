@@ -1,10 +1,10 @@
 '''test requests'''
 import requests
-
+from pprint import pprint
 url = 'https://randomuser.me/api/'
 response = requests.get(url)
 
 if response.status_code == 200:
-    print(response.json())
+    pprint(response.json())
 else:
-    print('some request errors')
+    pprint('some request errors')
