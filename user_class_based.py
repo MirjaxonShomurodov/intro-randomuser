@@ -1,9 +1,8 @@
 import requests
-
-
 class RandomUser:
     def __init__(self) -> None:
         self.url = 'https://randomuser.me/api/'
+        
 
     def get_randomuser(self) -> dict:
         '''get full data from randomuser
@@ -11,7 +10,11 @@ class RandomUser:
         Returns:
             dict: full data
         '''
-        pass
+        respons = requests.get(self.url)
+    
+        r=respons.json()
+        return r["results"]
+    # print(get_randomuser())
     
     def get_cell(self) -> str:
         '''get user cell from randomuser
@@ -19,7 +22,8 @@ class RandomUser:
         Returns:
             str: user cell
         '''
-        pass
+        a=requests.get(self.url).json()
+        return a["results"][0]["cell"]
     
     def get_city(self) -> str:
         '''get user city from randomuser
@@ -27,15 +31,18 @@ class RandomUser:
         Returns:
             str: user city
         '''
-        pass
-    
+        a=requests.get(self.url).json()
+         
+        return a["results"][0]["location"]["country"]
     def get_dob(self) -> dict:
         '''get user dob from randomuser
         
         Returns:
             dict: user dob
         '''
-        pass
+        a=requests.get(self.url).json()
+         
+        return a["results"][0]["dob"]
     
     def get_email(self) -> str:
         '''get user email from randomuser
@@ -43,15 +50,17 @@ class RandomUser:
         Returns:
             str: user email
         '''
-        pass
-    
+        r=requests.get(self.url).json()
+        return r["results"][0]["email"]
     def get_email(self) -> str:
         '''get user email from randomuser
         
         Returns:
             str: user email
         '''
-        pass
+        r=requests.get(self.url).json()
+        return r["results"][0]["email"]
+        
     
     def get_first_name(self) -> str:
         '''get user first name from randomuser
@@ -59,7 +68,8 @@ class RandomUser:
         Returns:
             str: user first name
         '''
-        pass
+        p=requests.get(self.url).json()
+        return p["results"][0]["name"]['first']
     
     def get_last_name(self) -> str:
         '''get user last name from randomuser
@@ -67,7 +77,8 @@ class RandomUser:
         Returns:
             str: user last name
         '''
-        pass
+        p = requests.get(self.url).json()
+        return p["results"][0]["name"]["last"]
     
     def get_full_name(self) -> str:
         '''get user full name from randomuser
@@ -75,15 +86,16 @@ class RandomUser:
         Returns:
             str: user full name
         '''
-        pass
-    
+        p = requests.get(self.url).json()
+        return p["results"][0]["name"]
     def get_gender(self) -> str:
         '''get user gender from randomuser
         
         Returns:
             str: user gender
         '''
-        pass
+        p = requests.get(self.url).json()
+        return p["results"][0]["gender"]
     
     def get_id(self) -> dict:
         '''get user id from randomuser
@@ -91,7 +103,8 @@ class RandomUser:
         Returns:
             dict: user id
         '''
-        pass
+        p = requests.get(self.url).json()
+        return p["results"][0]["id"]
     
     def get_id_number(self) -> str:
         '''get user id number from randomuser
@@ -99,7 +112,9 @@ class RandomUser:
         Returns:
             str: user id number
         '''
-        pass
+        p = requests.get(self.url).json()
+        return p["results"][0]["id"]["value"]
+        
     
     def get_info(self) -> dict:
         '''get user info from randomuser
@@ -107,7 +122,8 @@ class RandomUser:
         Returns:
             dict: user info
         '''
-        pass
+        a=requests.get(self.url).json()
+        return a["info"]
     
     def get_nat(self) -> str:
         '''get user nat from randomuser
@@ -115,7 +131,8 @@ class RandomUser:
         Returns:
             str: user nat
         '''
-        pass
+        a=requests.get(self.url).json()
+        return a["results"][0]["nat"]
     
     def get_picture(self) -> dict:
         '''get user picture from randomuser
@@ -123,4 +140,8 @@ class RandomUser:
         Returns:
             dict: user picture
         '''
-        pass
+        a=requests.get(self.url).json()
+        return a["results"][0]["picture"]
+        
+data = RandomUser()
+print(data.get_cell())
